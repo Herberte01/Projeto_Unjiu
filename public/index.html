@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#142038">
+<meta name="description" content="UMJIU — União Mineira dos Jovens das Igrejas Unida. Eventos, inscrições, mensagens e fotos das mocidades de Minas Gerais.">
+<title>UMJIU — União Mineira dos Jovens das Igrejas Unida</title>
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<a class="skip" href="#app">Pular para o conteúdo</a>
+
+<header class="top" id="top">
+  <div class="top-bar">
+    <div class="top-pills">
+      <a class="pill pill-dark" id="pill-next" href="#/eventos" hidden></a>
+      <a class="pill pill-gold" id="pill-news" href="#/mural" hidden></a>
+    </div>
+    <a class="top-login" href="/admin">Entrar</a>
+  </div>
+  <div class="top-card">
+    <a class="logo" href="#/" aria-label="UMJIU, ir para o início"><img src="/img/logo.png" alt="UMJIU — União Mineira dos Jovens das Igrejas Unida" width="392" height="179"></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#/" data-nav="inicio">Início</a>
+      <a href="#/eventos" data-nav="eventos">Eventos</a>
+      <a href="#/mensagens" data-nav="mensagens">Mensagens</a>
+      <a href="#/galeria" data-nav="galeria">Galeria</a>
+      <a href="#/mural" data-nav="mural">Mural</a>
+    </nav>
+    <a class="btn btn-gold top-cta" href="#/eventos">Inscreva-se</a>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu-links" aria-label="Menu completo">
+    <a href="#/"><small>01</small>Início</a>
+    <a href="#/eventos"><small>02</small>Eventos</a>
+    <a href="#/mensagens"><small>03</small>Mensagens</a>
+    <a href="#/galeria"><small>04</small>Galeria</a>
+    <a href="#/mural"><small>05</small>Mural</a>
+  </nav>
+  <div class="menu-foot" id="menu-foot"></div>
+</div>
+
+<main id="app" tabindex="-1"><div class="loading" role="status">Carregando…</div></main>
+
+<footer class="foot" id="foot"></footer>
+
+<div class="modal" id="player" role="dialog" aria-modal="true" aria-label="Vídeo" hidden>
+  <button class="modal-x" data-act="close-player" aria-label="Fechar vídeo">&times;</button>
+  <div class="player-frame" id="player-frame"></div>
+</div>
+
+<div class="modal lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+  <button class="modal-x" data-act="lb-close" aria-label="Fechar foto">&times;</button>
+  <button class="lb-nav lb-prev" data-act="lb-prev" aria-label="Foto anterior">&#8249;</button>
+  <figure class="lb-fig"><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button class="lb-nav lb-next" data-act="lb-next" aria-label="Próxima foto">&#8250;</button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/js/site.js" defer></script>
+</body>
+</html>
