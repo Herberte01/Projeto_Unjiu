@@ -118,9 +118,13 @@ function ensureAdmin() {
   let password = process.env.ADMIN_PASSWORD;
   if (!password) {
     password = crypto.randomBytes(9).toString('base64url');
-    const envFile = path.join(ROOT, '.env');
-    fs.appendFileSync(envFile, `\n# Gerado no primeiro acesso. Troque a senha em Configurações no painel.\nADMIN_EMAIL=${email}\nADMIN_PASSWORD=${password}\n`);
-    console.log(`\n  Administrador criado: ${email}\n  A senha inicial foi gravada no arquivo .env (ADMIN_PASSWORD).\n`);
+    try {
+      fs.appendFileSync(path.join(ROOT, '.env'), `\n# Gerado no primeiro acesso. Troque a senha em Configurações no painel.\nADMIN_EMAIL=${email}\nADMIN_PASSWORD=${password}\n`);
+      console.log(`\n  Administrador criado: ${email}\n  A senha inicial foi gravada no arquivo .env (ADMIN_PASSWORD).\n`);
+    } catch {
+      // Em contêiner a pasta do código é somente leitura: defina ADMIN_PASSWORD nas variáveis de ambiente.
+      console.log(`\n  Administrador criado: ${email}\n  Senha inicial (troque em Configurações): ${password}\n`);
+    }
   }
   db.prepare('INSERT INTO users (email, name, pass_hash) VALUES (?, ?, ?)').run(email, 'Administrador', hashPassword(password));
 }
